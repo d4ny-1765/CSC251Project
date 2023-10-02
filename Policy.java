@@ -1,7 +1,7 @@
 public class Policy
 {
    //Defining all of the class's attributed.
-   private int number;
+   private String number;
    private String name;
    private String fName;
    private String lName;
@@ -13,7 +13,7 @@ public class Policy
    //no-arg constructor
    public Policy()
    {
-      number = -1;
+      number = "unknown";
       name = "unknown";
       fName = "unknown";
       lName = "unknown";
@@ -24,7 +24,7 @@ public class Policy
    }
    
    //constructor with arguments
-   public Policy(int number, String name, String fName, String lName, int age, String smokeStat, double height, double weight)
+   public Policy(String number, String name, String fName, String lName, int age, String smokeStat, double height, double weight)
    {
       this.number = number;
       this.name = name;
@@ -40,7 +40,7 @@ public class Policy
    /**
    * @param number - Policy number for displaying
    */
-   public void setNumber(int number)
+   public void setNumber(String number)
    {
       this.number = number;
    }
@@ -106,7 +106,7 @@ public class Policy
    /**
    * @return the Policy's number
    */
-   public int getNumber(){   
+   public String getNumber(){   
       return number;
    }
    
