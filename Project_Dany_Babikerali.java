@@ -1,55 +1,57 @@
-import java.util.Scanner;
+import java.util.*; 
+import java.io.*;
+
 public class Project_Dany_Babikerali
 {
    public static void main(String[] args)
    {
-      //Defining The Scanner Class
-      Scanner scnr = new Scanner(System.in);
-      
-      //Requesting inputs
-      System.out.print("Enter the Policy Number: ");
-      int number = scnr.nextInt();
-      scnr.nextLine();
-      
-      System.out.println();
-      
-      System.out.print("Enter the Provier's Name: ");
-      String name = scnr.nextLine();
-      
-      System.out.println();
-      
-      System.out.print("Enter your First Name: ");
-      String fName = scnr.nextLine();
-      
-      System.out.println();
-      
-      System.out.print("Enter your Last Name: ");
-      String lName = scnr.nextLine();
-     
-      System.out.println();
-      
-      System.out.print("Enter your age: ");
-      int age = scnr.nextInt();
-      scnr.nextLine();
-      
-      System.out.println();
-      
-      System.out.print("Do you smoke? (type 'smoker' if yes): ");
-      String smokeStat = scnr.nextLine();
-      
-      System.out.println();
-      
-      System.out.print("Enter your height (in inches): ");
-      double height = scnr.nextDouble();
-      scnr.nextLine();
-      
-      System.out.println();
-      
-      System.out.print("Enter your weight (in pounds): ");
-      double weight = scnr.nextDouble();
-      scnr.nextLine();
-      
-      System.out.println();
+               //Defining The Scanner Class
+               Scanner scnr = new Scanner(System.in);
+               
+               //Requesting inputs
+               System.out.print("Enter the Policy Number: ");
+               int number = scnr.nextInt();
+               scnr.nextLine();
+               
+               System.out.println();
+               
+               System.out.print("Enter the Provier's Name: ");
+               String name = scnr.nextLine();
+               
+               System.out.println();
+               
+               System.out.print("Enter your First Name: ");
+               String fName = scnr.nextLine();
+               
+               System.out.println();
+               
+               System.out.print("Enter your Last Name: ");
+               String lName = scnr.nextLine();
+              
+               System.out.println();
+               
+               System.out.print("Enter your age: ");
+               int age = scnr.nextInt();
+               scnr.nextLine();
+               
+               System.out.println();
+               
+               System.out.print("Do you smoke? (type 'smoker' if yes): ");
+               String smokeStat = scnr.nextLine();
+               
+               System.out.println();
+               
+               System.out.print("Enter your height (in inches): ");
+               double height = scnr.nextDouble();
+               scnr.nextLine();
+               
+               System.out.println();
+               
+               System.out.print("Enter your weight (in pounds): ");
+               double weight = scnr.nextDouble();
+               scnr.nextLine();
+               
+               System.out.println();
       
       //Defining the Policy Class
       Policy p = new Policy(number, name, fName, lName, age, smokeStat, height, weight);
