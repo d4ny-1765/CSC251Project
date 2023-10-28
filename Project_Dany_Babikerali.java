@@ -7,71 +7,71 @@ public class Project_Dany_Babikerali
 {
    public static void main(String[] args)
    {
-                    
-     try { 
+      String policyNumber;
+      String providerName;
+      String firstName;
+      String lastName;
+      int age;
+      String smokingStatus;
+      double height;
+      double weight;
+      int numSmokers = 0;
+      
+      //ArrayList to store Policy Objects
+      ArrayList<Policy> policyList = new ArrayList<Policy>();
+      
+      //Create and open the file
       File file = new File("PolicyInformation.txt");
       Scanner inputFile = new Scanner(file);
       
-      //Creating an arrayList
-      ArrayList<Policy> policyList = new ArrayList<>();
+      //process all information in the file
+      while(inputFile.hasNext())
+      {
       
-      int noOfSmokers = 0;
-      int noOfNonS = 0;
-      String pNumber = "";
-      String pName = "";
-      String pfName = "";
-      String plName = "";
-      int pAge = 0;
-      String sStatus = "";
-      double pHeight = 0;
-      double pWeight = 0;
-      
-      while (inputFile.hasNext()) {
-         pNumber = inputFile.nextLine();
-         pName = inputFile.nextLine();
-         pfName = inputFile.nextLine();
-         plName = inputFile.nextLine();
-         pAge = inputFile.nextInt();
-         sStatus = inputFile.nextLine();
-         pWeight = inputFile.nextDouble();
+         policyNumber = inputFile.nextLine();
+         providerName = inputFile.nextLine();
+         firstName = inputFile.nextLine();
+         lastName = inputFile.nextLine();
+         age = inputFile.nextInt();
+         inputFile.nextLine();
+         smokingStatus = inputFile.nextLine();
+         height = inputFile.nextDouble();
+         weight = inputFile.nextDouble();
          
-         if(inputFile.hasNext()) {
+         //skip the blank line
+         if(inputFile.hasNext())
             inputFile.nextLine();
+         if(inputFile.hasNext())
             inputFile.nextLine();
-         }
+            
+         //create a Policy object and add it to our ArrayList
+         policyList.add(new Policy(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight));
          
-         if (sStatus == "smoker") {
-            noOfSmokers += 1;
-         }
-         if (sStatus == "non-smoker") {
-            noOfNonS += 1;
-         }
-         
-         policyList.add(new Policy(pNumber, pName, pfName, plName, pAge, sStatus, pHeight, pWeight));
-       }
-      System.out.println(file);
-     }
-     catch(IOException ex) {//If something goes wrong, an IOException is "thrown" to us, and we "catch" it and deal with it
-     
-         //use the getMessage method of the exception we "caught" to print out it's message about what went wrong
-         System.out.println("Something went wrong reading the file: " + ex.getMessage());
-     }
-   for(Policy policy : policyList) {
+      }//End of while loop
       
+      //print out information about each Policy object
+      for(Policy policy : policyList) {
+         
+         //display information about Policy
+         System.out.println("Policy Number: " + policy.getPolicyNumber());
+         System.out.println("Provider Name: " + policy.getProviderName());
+         System.out.println("Policyholder's First Name: " + policy.getFirstName());
+         System.out.println("Policyholder's Last Name: " + policy.getLastName());
+         System.out.println("Policyholder's Age: " + policy.getAge());
+         System.out.println("Policyholder's Smoking Status: " + policy.getSmokingStatus());
+         System.out.println("Policyholder's Height: " + policy.getHeight() + " inches");
+         System.out.println("Policyholder's Weight: " + policy.getWeight() + " pounds");
+         System.out.printf("Policyholder's BMI: %.2f\n", policy.getBMI());
+         System.out.printf("Policy Price: $%.2f\n", policy.getPrice());
+         System.out.println();
+         
+         if(policy.getSmokingStatus().equalsIgnoreCase("smoker"))//keep track of the number of smokers
+            numSmokers++;
+      }//End of for loop
+      
+      //print out the number of smokers and non-smokers
+      System.out.println("The number of policies with a smoker is: " + numSmokers);
+      System.out.println("The number of policies with a non-smoker is: " + (policyList.size() - numSmokers) );   
 
-      System.out.println("Policy Number: " + policy.getNumber());           
-      System.out.println("Provider Name: " + policy.getName());
-      System.out.println("Policyholder’s First Name: " + policy.getfName());
-      System.out.println("Policyholder’s Last Name: " + policy.getlName());
-      System.out.println("Policyholder’s Age: " + policy.getAge());
-      System.out.println("Policyholder’s Smoking Status: " + policy.getSmokeStatus());
-      System.out.println("Policyholder’s Height: " + policy.getHeight());
-      System.out.println("Policyholder’s Weight: " + policy.getWeight());
-      System.out.println("Policyholder’s BMI: " + String.format("%.2f", policy.getBMI()));
-      System.out.println("Policy Price: $" + String.format("%.2f", policy.getPrice()));
-      System.out.println("The number of policies with a smoker is: " + noOfSmokers);
-      System.out.println("The number of policies with a smoker is: " + noOfNonS);
-    }  
-
-	}
-}
+	}// End of main method
+}//End of class

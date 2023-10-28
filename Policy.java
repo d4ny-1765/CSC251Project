@@ -167,31 +167,36 @@ public class Policy
    * @return the Policy holder's BMI
    */
    public double getBMI() {
-      return (weight * 703)/(height * height);
+      final double CONVFACTOR = 703;
+      
+      return (weight * CONVFACTOR) / (height * height);
    }
    //Method for price of insurace policy:
    /**
    * @return the price of the insurance policy
    */
    public double getPrice() {
-      //define constant for base fee ($600)
-      final double BASE_FEE = 600.00;
-      //define price and initialize with base fee
-      double price = BASE_FEE;
-      //if age > 50, add $75 to the price
-      if (age>50) {
-            price += 75;
-      }
-      //if smoker, add $100 to the price
-      if (smokeStat == "smoker") {
-         price += 100;
-      }
-      //if BMI > 35, additional fee = (BMI - 35)*20. add additional fee to price
-      if (getBMI() > 35) {
-         double addFee = (getBMI() - 35) * 20;
-         price += addFee;
-      }
+      final double BASE_PRICE = 600;
+      final double ADDITIONAL_FEE_AGE = 75;
+      final double ADDITIONAL_FEE_SMOKING = 100;
+      final double ADDITIONAL_FEE_PER_BMI = 20;
+      
+      final int AGE_THRESHOLD = 50;
+      final int BMI_THRESHOLD = 35;
+      
+      double price = BASE_PRICE;
+      
+      if(age > AGE_THRESHOLD)
+         price += ADDITIONAL_FEE_AGE;
+         
+      if(smokingStatus.equalsIgnoreCase("smoker"))
+         price += ADDITIONAL_FEE_SMOKING;
+      
+      if(getBMI() > BMI_THRESHOLD)
+         price += ((getBMI() - BMI_THRESHOLD) * ADDITIONAL_FEE_PER_BMI);
+         
       return price;
+
    }
       
       
