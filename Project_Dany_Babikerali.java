@@ -54,16 +54,7 @@ public class Project_Dany_Babikerali
       for(Policy policy : policyList) {
          
          //display information about Policy
-         System.out.println("Policy Number: " + policy.getPolicyNumber());
-         System.out.println("Provider Name: " + policy.getProviderName());
-         System.out.println("Policyholder's First Name: " + policy.ph.getFirstName());
-         System.out.println("Policyholder's Last Name: " + policy.ph.getLastName());
-         System.out.println("Policyholder's Age: " + policy.ph.getAge());
-         System.out.println("Policyholder's Smoking Status: " + policy.ph.getSmokingStatus());
-         System.out.println("Policyholder's Height: " + policy.ph.getHeight() + " inches");
-         System.out.println("Policyholder's Weight: " + policy.ph.getWeight() + " pounds");
-         System.out.printf("Policyholder's BMI: %.2f\n", policy.ph.getBMI());
-         System.out.printf("Policy Price: $%.2f\n", policy.getPrice());
+         System.out.println(policy);
          System.out.println();
          
          if(policy.ph.getSmokingStatus().equalsIgnoreCase("smoker"))//keep track of the number of smokers
@@ -71,6 +62,7 @@ public class Project_Dany_Babikerali
       }//End of for loop
       
       //print out the number of smokers and non-smokers
+      System.out.println("There were " + Policy.policyCreated + " Policy objects created.\n");
       System.out.println("The number of policies with a smoker is: " + numSmokers);
       System.out.println("The number of policies with a non-smoker is: " + (policyList.size() - numSmokers) );  
 

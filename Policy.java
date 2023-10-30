@@ -114,7 +114,7 @@ public class Policy
       return "Policy Number: " + policyNumber + "\n"
              + "Provider Name" + providerName + "\n"
              + ph + "\n"
-             + "Policy Price: " + getPrice();
+             + String.format("Policy Price: %.2f" , getPrice());
    }
 
 }
