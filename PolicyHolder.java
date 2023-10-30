@@ -40,6 +40,20 @@ public class PolicyHolder {
    
    
    /**
+      Copy Constructor
+      @param obj a PolicyHolder object to copy of
+   */
+   public PolicyHolder(PolicyHolder obj) {
+      FirstName = obj.FirstName;
+      LastName = obj.LastName;
+      age = obj.age;
+      smokingStatus = obj.smokingStatus;
+      height = obj.height;
+      weight = obj.weight;
+   }
+   
+   
+   /**
    @return The Policyholder's first name
    */
    public String getFirstName()

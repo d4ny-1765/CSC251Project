@@ -26,7 +26,7 @@ public class Policy
    {
       policyNumber = pNumber;
       providerName = pName;
-      ph = pHolder;
+      ph = new PolicyHolder(pHolder);
       policyCreated++;
    }
    
@@ -47,6 +47,13 @@ public class Policy
       return providerName;
    }
    
+   /**
+   @return The Policy Holder Class
+   */
+   public PolicyHolder getPolicyHolder() {
+      return new PolicyHolder(ph);
+   }
+   
   
    
    //setters//
@@ -65,6 +72,13 @@ public class Policy
    public void setProviderName(String pName)
    {
       providerName = pName;
+   }
+   
+   /**
+   @param pHolder the Policy Holder's class
+   */
+   public void setPolicyHolder(PolicyHolder pHolder) {
+      pHolder = new PolicyHolder(ph);
    }
    
      
