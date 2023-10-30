@@ -1,181 +1,76 @@
 public class Policy
-{
-   //Defining all of the class's attributed.
-   private String number;
-   private String name;
-   private String fName;
-   private String lName;
-   private int age;
-   private String smokeStat;
-   private double height;
-   private double weight;
-   
-   //no-arg constructor
+{  //fields
+   private String policyNumber;
+   private String providerName;
+   public PolicyHolder ph;
+
+   /**
+   No-arg constructor that explicitly initializes all fields
+   */
    public Policy()
    {
-      number = "unknown";
-      name = "unknown";
-      fName = "unknown";
-      lName = "unknown";
-      age = -1;
-      smokeStat = "unknown";
-      height = 0.0;
-      weight = 0.0;
+      policyNumber = "";
+      providerName = "";
+      ph = new PolicyHolder();
    }
    
-   //constructor with arguments
-   public Policy(String number, String name, String fName, String lName, int age, String smokeStat, double height, double weight)
+   /**
+   Constructor that accepts arguments for each field
+   @param pNumber The Policy number
+   @param pName The Policy Provider's Name
+
+   */
+   public Policy(String pNumber, String pName, PolicyHolder pHolder)
    {
-      this.number = number;
-      this.name = name;
-      this.fName = fName;
-      this.lName = lName;
-      this.age = age;
-      this.smokeStat = smokeStat;
-      this.height  = height;
-      this.weight = weight;
+      policyNumber = pNumber;
+      providerName = pName;
+      ph = pHolder;
    }
    
-   //setter method for number
+   //getters//
    /**
-   * @param number - Policy number for displaying
+   @return The Policy Number
    */
-   public void setNumber(String number)
+   public String getPolicyNumber()
    {
-      this.number = number;
-   }
-   //setter method for name
-    /**
-   * @param number - Policy name for displaying
-   */
-   public void setName(String name)
-   {
-      this.name = name;
-   }
-   //setter method for first Name
-    /**
-   * @param number - Policy holder's fisrt Name for displaying
-   */
-   public void setfName(String fName)
-   {
-      this.fName = fName;
-   } 
-   //setter method for last name
-   /**
-   * @param number - Policy holder's last Name for displaying
-   */
-   public void setlName(String lName)
-   {
-      this.lName = lName;
-   }  
-   //setter method for age
-   /**
-   * @param number - Policy holder's age for displaying
-   */
-   public void setAge(int age)
-   {
-      this.age = age;
+      return policyNumber;
    }
    
-   //setter method for smoking status
    /**
-   * @param number - Policy holder's smokeStatus for displaying
+   @return The Policy Provider's Name
    */
-   public void setSmokeStat(String smokeStat)
+   public String getProviderName()
    {
-      this.smokeStat = smokeStat;
-   }
-   //setter method for height
-   /**
-   * @param number - Policy holder's height for displaying
-   */
-   public void setHeight(double height) 
-   {
-      this.height = height;
+      return providerName;
    }
    
-   //setter method for weight
-   /**
-   * @param number - Policy holder's weight for displaying
-   */
-   public void setWeight(double weight)
-   {
-      this.weight = weight;
-   }
-   //getter method for number
-   /**
-   * @return the Policy's number
-   */
-   public String getNumber(){   
-      return number;
-   }
-   
-   //getter method for name
-   /**
-   * @return the Policy's name
-   */
-   public String getName() {
-      return name;
-   }
-   
-   //getter method for first Name
-   /**
-   * @return the Policy holder's first name
-   */
-   public String getfName(){
-      return fName;
-   }
-   //getter method for last name
-   /**
-   * @return the Policy holder's last name
-   */
-   public String getlName(){
-      return lName;
-   }
-   //getter method for age
-   /**
-   * @return the Policy holder's age
-   */
-   public int getAge() {
-      return age;
-   }
   
-   //getter method for smoking status
+   
+   //setters//
+   
    /**
-   * @return the Policy holder's smoking status
+   @param pNumber The Policy Number
    */
-   public String getSmokeStatus() {
-      return smokeStat;
-   }
-   //getter method for height
-   /**
-   * @return the Policy holder's height
-   */
-   public double getHeight(){
-      return height;
-   }
-   //getter method for weight
-   /**
-   * @return the Policy holder's weight
-   */
-   public double getWeight() {
-      return weight;
+   public void setPolicyNumber(String pNumber)
+   {
+      policyNumber = pNumber;
    }
    
-   //Method that returns BMI of the policyholder BMI = (weight * 703)/(height * height)
    /**
-   * @return the Policy holder's BMI
+   @param pName The Policy Provider's name
    */
-   public double getBMI() {
-      final double CONVFACTOR = 703;
-      
-      return (weight * CONVFACTOR) / (height * height);
+   public void setProviderName(String pName)
+   {
+      providerName = pName;
    }
-   //Method for price of insurace policy:
+   
+     
    /**
-   * @return the price of the insurance policy
+   Calculates the Policy's price
+   @return The price of the Policy
    */
-   public double getPrice() {
+   public double getPrice()
+   {
       final double BASE_PRICE = 600;
       final double ADDITIONAL_FEE_AGE = 75;
       final double ADDITIONAL_FEE_SMOKING = 100;
@@ -186,20 +81,15 @@ public class Policy
       
       double price = BASE_PRICE;
       
-      if(age > AGE_THRESHOLD)
+      if(ph.getAge() > AGE_THRESHOLD)
          price += ADDITIONAL_FEE_AGE;
          
-      if(smokingStatus.equalsIgnoreCase("smoker"))
+      if(ph.getSmokingStatus().equalsIgnoreCase("smoker"))
          price += ADDITIONAL_FEE_SMOKING;
       
-      if(getBMI() > BMI_THRESHOLD)
-         price += ((getBMI() - BMI_THRESHOLD) * ADDITIONAL_FEE_PER_BMI);
+      if(ph.getBMI() > BMI_THRESHOLD)
+         price += ((ph.getBMI() - BMI_THRESHOLD) * ADDITIONAL_FEE_PER_BMI);
          
       return price;
-
    }
-      
-      
-   
-   
 }

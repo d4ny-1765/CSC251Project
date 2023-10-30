@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Project_Dany_Babikerali
 {
-   public static void main(String[] args)
+   public static void main(String[] args) throws IOException
    {
       String policyNumber;
       String providerName;
@@ -45,7 +45,8 @@ public class Project_Dany_Babikerali
             inputFile.nextLine();
             
          //create a Policy object and add it to our ArrayList
-         policyList.add(new Policy(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight));
+         PolicyHolder ph = new PolicyHolder(firstName, lastName, age, smokingStatus, height, weight);
+         policyList.add(new Policy(policyNumber, providerName, ph));
          
       }//End of while loop
       
@@ -55,17 +56,17 @@ public class Project_Dany_Babikerali
          //display information about Policy
          System.out.println("Policy Number: " + policy.getPolicyNumber());
          System.out.println("Provider Name: " + policy.getProviderName());
-         System.out.println("Policyholder's First Name: " + policy.getFirstName());
-         System.out.println("Policyholder's Last Name: " + policy.getLastName());
-         System.out.println("Policyholder's Age: " + policy.getAge());
-         System.out.println("Policyholder's Smoking Status: " + policy.getSmokingStatus());
-         System.out.println("Policyholder's Height: " + policy.getHeight() + " inches");
-         System.out.println("Policyholder's Weight: " + policy.getWeight() + " pounds");
-         System.out.printf("Policyholder's BMI: %.2f\n", policy.getBMI());
+         System.out.println("Policyholder's First Name: " + policy.ph.getFirstName());
+         System.out.println("Policyholder's Last Name: " + policy.ph.getLastName());
+         System.out.println("Policyholder's Age: " + policy.ph.getAge());
+         System.out.println("Policyholder's Smoking Status: " + policy.ph.getSmokingStatus());
+         System.out.println("Policyholder's Height: " + policy.ph.getHeight() + " inches");
+         System.out.println("Policyholder's Weight: " + policy.ph.getWeight() + " pounds");
+         System.out.printf("Policyholder's BMI: %.2f\n", policy.ph.getBMI());
          System.out.printf("Policy Price: $%.2f\n", policy.getPrice());
          System.out.println();
          
-         if(policy.getSmokingStatus().equalsIgnoreCase("smoker"))//keep track of the number of smokers
+         if(policy.ph.getSmokingStatus().equalsIgnoreCase("smoker"))//keep track of the number of smokers
             numSmokers++;
       }//End of for loop
       
