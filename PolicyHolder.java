@@ -146,6 +146,14 @@ public class PolicyHolder {
       return (weight * CONVFACTOR) / (height * height);
    }
 
-   
+   public String toString() {
+      return "Policyholder's First Name: " + FirstName + "\n"
+             + "Policyholder's Last Name:  " + LastName + "\n"
+             + "Policyholder's Age: " + age + "\n"
+             + "Policyholder's Smoking Status: " + smokingStatus + "\n"
+             + "Policyholder's Height:  " + height + "\n"
+             + "Policyholder's Weight: " + weight + "\n"
+             + "Policyholder's BMI: " + getBMI();
+   }   
    
 }//End of Class

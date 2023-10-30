@@ -92,4 +92,12 @@ public class Policy
          
       return price;
    }
+   
+   public String toString() {
+      return "Policy Number: " + policyNumber + "\n"
+             + "Provider Name" + providerName + "\n"
+             + ph + "\n"
+             + "Policy Price: " + getPrice();
+   }
+
 }
