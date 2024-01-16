@@ -22,11 +22,11 @@ public class Policy
    @param pName The Policy Provider's Name
 
    */
-   public Policy(String pNumber, String pName, PolicyHolder pHolder)
+   public Policy(String pNumber, String pName, PolicyHolder ph)
    {
       policyNumber = pNumber;
       providerName = pName;
-      ph = new PolicyHolder(pHolder);
+      this.ph = new PolicyHolder(ph);
       policyCreated++;
    }
    
